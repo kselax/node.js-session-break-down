@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hi!</h1>
+
+  <button id="pluss_one">pluss_one</button>
+  <br>
+  <button id="set_zero">set_zero</button>
+
+  <script src="/socket.io.js" charset="utf-8"></script>
+  <script src="/jquery.js" charset="utf-8"></script>
+
+  <script>
+    var socket = io();
+
+    $('#pluss_one').click(function(event) {
+      socket.emit('pluss_one', 'pluss_one');
+    });
+    $('#set_zero').click(function(event) {
+      socket.emit('set_zero', 'set_zero')
+    });
+
+    socket.on('message', function(msg){
+      console.log('msg = ' + msg);
+    });
+
+  </script>
+
+</body>
+</html>
